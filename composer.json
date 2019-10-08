@@ -1,0 +1,31 @@
+{
+    "name": "php-defer/php-defer",
+    "description": "Golang's defer statement for PHP",
+    "keywords": ["golang", "defer"],
+    "type": "library",
+    "require": {
+        "php": "^5.3 || ^7.0"
+    },
+    "require-dev": {
+        "awesomite/phpunit-4.8-fixer": "^1.0",
+        "phpunit/phpunit": "4.8.36"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bartłomiej Krukowski",
+            "email": "bartlomiej@krukowski.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PhpDefer\\": "src/"
+        },
+        "files": ["src/functions.inc.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpDefer\\": "tests/"
+        }
+    }
+}
