@@ -11,11 +11,12 @@
 
 namespace PhpDefer;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @internal
  *
  * @covers \defer
- * @covers \PhpDefer\Defer
  */
 final class DeferTest extends TestCase
 {
@@ -63,49 +64,6 @@ final class DeferTest extends TestCase
         unset($ctx2);
         $this->assertSame('', $s1->getSentence());
         $this->assertSame('defer', $s2->getSentence());
-    }
-
-    /**
-     * @dataProvider providerInvalidArgumentContext
-     *
-     * @param $context
-     */
-    public function testInvalidArgumentContext($context)
-    {
-        $this->expectException(\get_class(new \InvalidArgumentException()));
-        $this->expectExceptionMessage('Function defer expects argument $context of type array or null');
-        defer($context, function () {});
-    }
-
-    public function providerInvalidArgumentContext()
-    {
-        return array(
-            array(''),
-            array(5),
-            array(3.15),
-        );
-    }
-
-    /**
-     * @dataProvider providerInvalidArgumentCallable
-     *
-     * @param $notCallable
-     */
-    public function testInvalidArgumentCallable($notCallable)
-    {
-        $this->expectException(\get_class(new \InvalidArgumentException()));
-        $this->expectExceptionMessage('Function defer expects argument $callable of type callable');
-        defer($_, $notCallable);
-    }
-
-    public function providerInvalidArgumentCallable()
-    {
-        return array(
-            array(null),
-            array(''),
-            array(5),
-            array(3.15),
-        );
     }
 
     /**
