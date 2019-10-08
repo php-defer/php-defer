@@ -7,18 +7,9 @@ php:
   - 7.3
   - 7.2
   - 7.1
-  - 7.0
-  - 5.6
-  - 5.5
-  - 5.4
 
 env:
   - COMPOSER_MEMORY_LIMIT=-1
-
-matrix:
-  include:
-    - php: 5.3
-      dist: precise
 
 install:
   - travis_retry composer update
@@ -29,7 +20,6 @@ install:
     fi
 
 before_script:
-  - vendor/bin/phpunit-4.8-fixer
   - composer show
 
 script:

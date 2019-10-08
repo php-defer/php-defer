@@ -4,11 +4,10 @@
     "keywords": ["golang", "defer"],
     "type": "library",
     "require": {
-        "php": "^5.3 || ^7.0"
+        "php": "^7.1"
     },
     "require-dev": {
-        "awesomite/phpunit-4.8-fixer": "^1.0",
-        "phpunit/phpunit": "4.8.36"
+        "phpunit/phpunit": "^7.5 || ^8.4"
     },
     "license": "MIT",
     "authors": [
@@ -18,9 +17,6 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "PhpDefer\\": "src/"
-        },
         "files": ["src/functions.inc.php"]
     },
     "autoload-dev": {
