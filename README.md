@@ -13,7 +13,7 @@ A [defer statement](https://blog.golang.org/defer-panic-and-recover) originally 
 defer($context, $callback);
 ```
 
-`defer` requires two parameters: `$context` and `$callable`.
+`defer` requires two parameters: `$context` and `$callback`.
 
 1. `$context` - unused in your app, required to achieve "defer" effect. I recommend to use `$_` always.
 2. `$callback` - a callback which is executed after the surrounding function returns.
