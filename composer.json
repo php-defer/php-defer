@@ -17,6 +17,9 @@
         }
     ],
     "autoload": {
+        "psr-4": {
+            "PhpDefer\\": "src/"
+        },
         "files": ["src/functions.inc.php"]
     },
     "autoload-dev": {

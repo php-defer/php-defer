@@ -1,5 +1,7 @@
 <?php
 
+use PhpDefer\Deferable;
+
 /*
  * This file is part of the php-defer/php-defer package.
  *
@@ -28,4 +30,48 @@ function defer(?array &$context, callable $callback)
             \call_user_func($this->callback);
         }
     };
+}
+
+/**
+ * @param null|Deferable $context
+ * @param callable       $callback
+ */
+function rdefer(?Deferable &$context, callable $callback)
+{
+    $deferable = new class($callback) implements Deferable {
+        /** @var callable */
+        private $callback;
+        /** @var Deferable */
+        private $deferable;
+
+        public function __construct($callback)
+        {
+            $this->callback = $callback;
+        }
+
+        public function __destruct()
+        {
+            if (isset($this->deferable)) {
+                unset($this->deferable);
+            }
+
+            \call_user_func($this->callback);
+        }
+
+        public function append(Deferable $deferable)
+        {
+            if (isset($this->deferable)) {
+                $this->deferable->append($deferable);
+            } else {
+                $this->deferable = $deferable;
+            }
+        }
+    };
+
+    if (! isset($context)) {
+        $context = $deferable;
+        return;
+    }
+
+    $context->append($deferable);
 }
