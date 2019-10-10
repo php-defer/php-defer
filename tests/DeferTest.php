@@ -24,7 +24,7 @@ final class DeferTest extends TestCase
     {
         $sentence = new Sentence();
         $this->appendOneTwoThree($sentence);
-        $this->assertSame('one three two', $sentence->getSentence());
+        $this->assertSame('one two three', $sentence->getSentence());
     }
 
     public function testThrowException()
@@ -88,10 +88,10 @@ final class DeferTest extends TestCase
     private function appendOneTwoThree(Sentence $sentence)
     {
         defer($_, function () use ($sentence) {
-            $sentence->append('two');
+            $sentence->append('three');
         });
         defer($_, function () use ($sentence) {
-            $sentence->append('three');
+            $sentence->append('two');
         });
 
         $sentence->append('one');
