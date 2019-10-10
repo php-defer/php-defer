@@ -10,22 +10,26 @@
  */
 
 /**
- * @param null|array $context
- * @param callable   $callback
+ * @param null|SplStack $context
+ * @param callable      $callback
  */
-function defer(?array &$context, callable $callback)
+function defer(?SplStack &$context, callable $callback)
 {
-    $context[] = new class($callback) {
-        private $callback;
+    $context = $context ?? new SplStack();
 
-        public function __construct($callback)
-        {
-            $this->callback = $callback;
-        }
+    $context->push(
+        new class($callback) {
+            private $callback;
 
-        public function __destruct()
-        {
-            \call_user_func($this->callback);
+            public function __construct($callback)
+            {
+                $this->callback = $callback;
+            }
+
+            public function __destruct()
+            {
+                \call_user_func($this->callback);
+            }
         }
-    };
+    );
 }
