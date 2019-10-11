@@ -11,16 +11,22 @@ A [defer statement](https://blog.golang.org/defer-panic-and-recover) originally 
 <?php
 
 defer($context, $callback);
+
+go_defer($context, $callback);
 ```
 
-`defer` requires two parameters: `$context` and `$callback`.
+`defer` and `go_defer` require two parameters: `$context` and `$callback`.
 
 1. `$context` - unused in your app, required to achieve "defer" effect. I recommend to use `$_` always.
 2. `$callback` - a callback which is executed after the surrounding function returns.
 
+`defer` executes callbacks First In, First Out. Functions execute in the order you deferred them.
+
+`go_defer` more accurately emulates Golang's `defer` functionality and executes callbacks in Last In, First Out order.
+
 ## Examples
 
-### Defer the execution of a code
+### Defer the execution of a code, using `defer`
 
 ```php
 <?php
@@ -49,6 +55,37 @@ echo "after goodbye\n";
 // ...
 // goodbye
 // after goodbye
+```
+
+### Defer the execution of a code, using `go_defer`
+
+```php
+<?php
+
+function rollCall()
+{
+    go_defer($_, function () {
+        echo "I was deferred first!\n";
+    });
+    
+    go_defer($_, function () {
+        echo "I was deferred last!\n";
+    });
+
+    echo "I was NOT deferred!\n";
+}
+
+echo "before rollCall\n";
+rollCall();
+echo "after rollCall\n";
+
+// Output:
+//
+// before rollCall
+// I was NOT deferred!
+// I was deferred last!
+// I was deferred first!
+// after rollCall
 ```
 
 ### Defer and exceptions

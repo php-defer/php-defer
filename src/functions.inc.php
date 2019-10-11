@@ -29,3 +29,25 @@ function defer(?array &$context, callable $callback)
         }
     };
 }
+
+/**
+ * @param null|array $context
+ * @param callable   $callback
+ */
+function go_defer(?array &$context, callable $callback)
+{
+    $context = $context ?? [];
+    array_unshift($context, new class($callback) {
+        private $callback;
+
+        public function __construct($callback)
+        {
+            $this->callback = $callback;
+        }
+
+        public function __destruct()
+        {
+            \call_user_func($this->callback);
+        }
+    });
+}
