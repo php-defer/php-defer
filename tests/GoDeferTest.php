@@ -39,13 +39,6 @@ final class GoDeferTest extends TestCase
         $this->assertSame('before exception ... after exception', $sentence->getSentence());
     }
 
-    public function testMultipleContexts()
-    {
-        $sentence = new Sentence();
-        $this->appendOneTwoThreeInMultipleContexts($sentence);
-        $this->assertSame('one two three', $sentence->getSentence());
-    }
-
     public function testUnsetContext()
     {
         $s1 = new Sentence();
@@ -64,22 +57,6 @@ final class GoDeferTest extends TestCase
         unset($ctx2);
         $this->assertSame('', $s1->getSentence());
         $this->assertSame('defer', $s2->getSentence());
-    }
-
-    /**
-     * @param Sentence $sentence
-     */
-    private function appendOneTwoThreeInMultipleContexts(Sentence $sentence)
-    {
-        go_defer($ctx1, function () use ($sentence) {
-            $sentence->append('three');
-        });
-
-        go_defer($ctx2, function () use ($sentence) {
-            $sentence->append('two');
-        });
-
-        $sentence->append('one');
     }
 
     /**
