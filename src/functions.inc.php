@@ -15,17 +15,18 @@
  */
 function defer(?array &$context, callable $callback)
 {
-    $context[] = new class($callback) {
+    if ($context === null) {
+        $context = [];
+    }
+    array_unshift($context, new class($callback) {
         private $callback;
-
         public function __construct($callback)
         {
             $this->callback = $callback;
         }
-
         public function __destruct()
         {
             \call_user_func($this->callback);
         }
-    };
+    });
 }
