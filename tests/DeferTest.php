@@ -66,27 +66,6 @@ final class DeferTest extends TestCase
     }
 
     /**
-     * @dataProvider providerInvalidArgumentContext
-     *
-     * @param $context
-     */
-    public function testInvalidArgumentContext($context)
-    {
-        $this->expectException(\get_class(new \InvalidArgumentException()));
-        $this->expectExceptionMessage('Function defer expects argument $context of type array or null');
-        defer($context, function () {});
-    }
-
-    public function providerInvalidArgumentContext()
-    {
-        return array(
-            array(''),
-            array(5),
-            array(3.15),
-        );
-    }
-
-    /**
      * @dataProvider providerInvalidArgumentCallable
      *
      * @param $notCallable
@@ -130,10 +109,10 @@ final class DeferTest extends TestCase
     private function appendOneTwoThree(Sentence $sentence)
     {
         defer($_, function () use ($sentence) {
-            $sentence->append('two');
+            $sentence->append('three');
         });
         defer($_, function () use ($sentence) {
-            $sentence->append('three');
+            $sentence->append('two');
         });
 
         $sentence->append('one');

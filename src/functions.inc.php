@@ -10,18 +10,11 @@
  */
 
 /**
- * @param null|array $context
- * @param callable   $callback
+ * @param null|SplStack $context
+ * @param callable      $callback
  */
-function defer(&$context, $callback)
+function defer(SplStack &$context = null, $callback)
 {
-    if (!\is_array($context) && null !== $context) {
-        throw new \InvalidArgumentException(\sprintf(
-            'Function %s expects argument $context of type array or null, %s given',
-            __FUNCTION__,
-            \is_object($callback) ? \get_class($callback) : \gettype($callback)
-        ));
-    }
     if (!\is_callable($callback)) {
         throw new \InvalidArgumentException(\sprintf(
             'Function %s expects argument $callable of type callable, %s given',
@@ -29,5 +22,7 @@ function defer(&$context, $callback)
             \is_object($callback) ? \get_class($callback) : \gettype($callback)
         ));
     }
-    $context[] = new \PhpDefer\Defer($callback);
+
+    $context = $context ?: new SplStack();
+    $context->push(new \PhpDefer\Defer($callback));
 }
