@@ -28,11 +28,11 @@ defer($context, $callback);
 function helloGoodbye()
 {
     defer($_, function () {
-        echo "...\n";
-    });
-    
-    defer($_, function () {
         echo "goodbye\n";
+    });
+
+    defer($_, function () {
+        echo "...\n";
     });
 
     echo "hello\n";
