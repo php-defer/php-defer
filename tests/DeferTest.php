@@ -87,6 +87,28 @@ final class DeferTest extends TestCase
         );
     }
 
+    public function testOrder()
+    {
+        $min = 1;
+        $max = 1000;
+        $expected = \range($min, $max);
+
+        for ($i = 0; $i < 100; ++$i) {
+            $range = array();
+            $this->range($range, $min, $max);
+            $this->assertSame($expected, $range);
+        }
+    }
+
+    private function range(&$arr, $min, $max)
+    {
+        for ($i = $max; $i >= $min; --$i) {
+            defer($_, function () use (&$arr, $i) {
+                $arr[] = $i;
+            });
+        }
+    }
+
     /**
      * @param Sentence $sentence
      */
