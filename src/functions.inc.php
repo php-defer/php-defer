@@ -9,10 +9,6 @@
  * file that was distributed with this source code.
  */
 
-/**
- * @param null|SplStack $context
- * @param callable      $callback
- */
 function defer(?SplStack &$context, callable $callback)
 {
     $context = $context ?? new SplStack();
