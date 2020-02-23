@@ -109,9 +109,6 @@ final class DeferTest extends TestCase
         }
     }
 
-    /**
-     * @param Sentence $sentence
-     */
     private function appendOneTwoThreeInMultipleContexts(Sentence $sentence)
     {
         defer($ctx1, function () use ($sentence) {
@@ -125,9 +122,6 @@ final class DeferTest extends TestCase
         $sentence->append('one');
     }
 
-    /**
-     * @param Sentence $sentence
-     */
     private function appendOneTwoThree(Sentence $sentence)
     {
         defer($_, function () use ($sentence) {
@@ -141,8 +135,6 @@ final class DeferTest extends TestCase
     }
 
     /**
-     * @param Sentence $sentence
-     *
      * @throws DeferException
      */
     private function throwExceptionInDefer(Sentence $sentence)

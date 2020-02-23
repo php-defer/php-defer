@@ -10,8 +10,7 @@
  */
 
 /**
- * @param null|SplStack $context
- * @param callable      $callback
+ * @param callable $callback
  */
 function defer(SplStack &$context = null, $callback)
 {
