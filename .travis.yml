@@ -3,10 +3,7 @@ language: php
 dist: trusty
 sudo: false
 
-php:
-  - 7.3
-  - 7.2
-  - 7.1
+php: 7.4
 
 env:
   - COMPOSER_MEMORY_LIMIT=-1
@@ -14,19 +11,13 @@ env:
 install:
   - travis_retry composer update
   - cd dev-tools; travis_retry composer update; cd ..
-  - |
-    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.1" ]]; then
-      export RUN_CS_FIXER="true";
-    fi
 
 before_script:
   - composer show
 
 script:
-  - |
-    if [[ "$RUN_CS_FIXER" = "true" ]]; then
-      ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist;
-    fi
+  - ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix
+  - ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist
   - vendor/bin/phpunit
 
 after_script:

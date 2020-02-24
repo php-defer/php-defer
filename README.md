@@ -78,6 +78,15 @@ try {
 // after exception
 ```
 
+## Installation
+
+PHP Defer supports all PHP versions from `^5.3` to `^7.4`.
+The following command will install the latest possible version of PHP Defer for your PHP interpreter.
+
+```
+composer require "php-defer/php-defer:^3.0|^4.0|^5.0"
+```
+
 ## Credits
 
 This library is inspired by [mostka/defer](https://github.com/tito10047/php-defer).
