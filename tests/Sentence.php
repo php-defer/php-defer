@@ -19,7 +19,7 @@ final class Sentence
     /**
      * @var string[]
      */
-    private $parts = [];
+    private array $parts = [];
 
     /**
      * @param string $part
