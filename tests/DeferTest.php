@@ -51,8 +51,8 @@ final class DeferTest extends TestCase
         $s1 = new Sentence();
         $s2 = new Sentence();
 
-        defer($ctx1, fn() => $s1->append('defer'));
-        defer($ctx2, fn() => $s2->append('defer'));
+        defer($ctx1, fn () => $s1->append('defer'));
+        defer($ctx2, fn () => $s2->append('defer'));
 
         $this->assertSame('', $s1->getSentence());
         $this->assertSame('', $s2->getSentence());
@@ -77,8 +77,8 @@ final class DeferTest extends TestCase
 
     private function appendOneTwoThreeInMultipleContexts(Sentence $sentence)
     {
-        defer($ctx1, fn() => $sentence->append('two'));
-        defer($ctx2, fn() => $sentence->append('three'));
+        defer($ctx1, fn () => $sentence->append('two'));
+        defer($ctx2, fn () => $sentence->append('three'));
 
         $sentence->append('one');
     }
@@ -86,14 +86,16 @@ final class DeferTest extends TestCase
     private function range(&$arr, $min, $max)
     {
         for ($i = $max; $i >= $min; --$i) {
-            defer($_, fn() => $arr[] = $i);
+            defer($_, function () use (&$arr, $i) {
+                $arr[] = $i;
+            });
         }
     }
 
     private function appendOneTwoThree(Sentence $sentence)
     {
-        defer($_, fn() => $sentence->append('three'));
-        defer($_, fn() => $sentence->append('two'));
+        defer($_, fn () => $sentence->append('three'));
+        defer($_, fn () => $sentence->append('two'));
 
         $sentence->append('one');
     }
@@ -103,7 +105,7 @@ final class DeferTest extends TestCase
      */
     private function throwExceptionInDefer(Sentence $sentence)
     {
-        defer($_, fn() => $sentence->append('after exception'));
+        defer($_, fn () => $sentence->append('after exception'));
 
         $sentence->append('before exception');
         $sentence->append('...');
