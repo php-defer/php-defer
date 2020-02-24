@@ -81,7 +81,7 @@ try {
 ## Installation
 
 PHP Defer supports all PHP versions from `^5.3` to `^7.4`.
-The following commands will install the latest possible version of PHP Defer for your PHP interpreter.
+The following command will install the latest possible version of PHP Defer for your PHP interpreter.
 
 ```
 composer require "php-defer/php-defer:^3.0|^4.0|^5.0"
