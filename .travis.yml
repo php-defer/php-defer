@@ -27,7 +27,10 @@ matrix:
 
 install:
   - travis_retry composer update
-  - cd dev-tools; travis_retry composer update; cd ..
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
+      cd dev-tools; travis_retry composer update; cd ..;
+    fi
   - |
     if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.1" ]]; then
       cd dev-tools;
