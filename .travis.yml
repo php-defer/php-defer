@@ -30,6 +30,9 @@ install:
   - cd dev-tools; travis_retry composer update; cd ..
   - |
     if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.1" ]]; then
+      cd dev-tools;
+      travis_retry composer require friendsofphp/php-cs-fixer:v2.16.1;
+      cd ..;
       export RUN_CS_FIXER="true";
     fi
 
