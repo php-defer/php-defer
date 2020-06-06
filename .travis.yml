@@ -4,7 +4,7 @@ dist: trusty
 sudo: false
 
 php:
-  - 8.0-nightly
+  - nightly
   - 7.4
   - 7.3
   - 7.2
@@ -19,7 +19,7 @@ env:
 
 matrix:
   include:
-    - php: 5.3
+    - php: nightly
       dist: precise
 
   allow_failures:
