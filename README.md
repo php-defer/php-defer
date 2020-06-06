@@ -70,12 +70,14 @@ function throwException()
 try {
     throwException();
 } catch (\Exception $e) {
+    echo "exception has been caught\n";
 }
 
 // Output:
 //
 // before exception
 // after exception
+// exception has been caught
 ```
 
 ## Credits

@@ -4,6 +4,8 @@ dist: trusty
 sudo: false
 
 php:
+  - nightly
+  - 7.4
   - 7.3
   - 7.2
   - 7.1
@@ -19,6 +21,9 @@ matrix:
   include:
     - php: 5.3
       dist: precise
+
+  allow_failures:
+    - php: nightly
 
 install:
   - travis_retry composer update
