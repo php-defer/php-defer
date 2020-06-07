@@ -19,7 +19,7 @@ env:
 
 matrix:
   include:
-    - php: nightly
+    - php: 5.3
       dist: precise
 
   allow_failures:
