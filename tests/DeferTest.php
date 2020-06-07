@@ -69,7 +69,6 @@ final class DeferTest extends TestCase
         $expected = \range($min, $max);
 
         for ($i = 0; $i < 100; ++$i) {
-            $range = [];
             $this->range($range, $min, $max);
             $this->assertSame($expected, $range);
         }
@@ -85,6 +84,7 @@ final class DeferTest extends TestCase
 
     private function range(&$arr, $min, $max)
     {
+        $arr = [];
         for ($i = $max; $i >= $min; --$i) {
             defer($_, function () use (&$arr, $i) {
                 $arr[] = $i;
