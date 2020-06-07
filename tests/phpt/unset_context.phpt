@@ -3,7 +3,7 @@ track_errors=0
 --FILE--
 <?php
 
-require \implode(\DIRECTORY_SEPARATOR, array(__DIR__, '..', '..', 'vendor', 'autoload.php'));
+require \implode(\DIRECTORY_SEPARATOR, [__DIR__, '..', '..', 'vendor', 'autoload.php']);
 
 function helloGoodbye()
 {

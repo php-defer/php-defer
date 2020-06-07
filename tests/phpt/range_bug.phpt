@@ -3,11 +3,11 @@ track_errors=0
 --FILE--
 <?php
 
-require \implode(\DIRECTORY_SEPARATOR, array(__DIR__, '..', '..', 'vendor', 'autoload.php'));
+require \implode(\DIRECTORY_SEPARATOR, [__DIR__, '..', '..', 'vendor', 'autoload.php']);
 
 function defer_range(&$arr, $min, $max)
 {
-    $arr = array();
+    $arr = [];
     for ($i = $max; $i >= $min; --$i) {
         // $i is a reference, value of given reference is changed after each iteration
         defer($_, function () use (&$arr, &$i) {
