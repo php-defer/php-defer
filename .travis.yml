@@ -4,6 +4,8 @@ dist: trusty
 sudo: false
 
 php:
+  - nightly
+  - 7.4
   - 7.3
   - 7.2
   - 7.1
@@ -11,9 +13,20 @@ php:
 env:
   - COMPOSER_MEMORY_LIMIT=-1
 
+matrix:
+  allow_failures:
+    - php: nightly
+
 install:
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} == "8.0" ]]; then
+      composer config platform.php 7.4.99;
+    fi
   - travis_retry composer update
-  - cd dev-tools; travis_retry composer update; cd ..
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
+      cd dev-tools; travis_retry composer update; cd ..;
+    fi
   - |
     if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.1" ]]; then
       export RUN_CS_FIXER="true";
@@ -30,4 +43,7 @@ script:
   - vendor/bin/phpunit
 
 after_script:
-  - travis_retry bin/coveralls.sh
+- |
+  if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
+    travis_retry bin/coveralls.sh;
+  fi

@@ -1,7 +1,7 @@
 # PHP Defer
 
-[![Coverage Status](https://coveralls.io/repos/github/php-defer/php-defer/badge.svg?branch=master)](https://coveralls.io/github/php-defer/php-defer?branch=master)
-[![Build Status](https://travis-ci.org/php-defer/php-defer.svg?branch=master)](https://travis-ci.org/php-defer/php-defer)
+[![Coverage Status](https://coveralls.io/repos/github/php-defer/php-defer/badge.svg?branch=4.0)](https://coveralls.io/github/php-defer/php-defer?branch=4.0)
+[![Build Status](https://travis-ci.org/php-defer/php-defer.svg?branch=4.0)](https://travis-ci.org/php-defer/php-defer)
 
 A [defer statement](https://blog.golang.org/defer-panic-and-recover) originally comes from Golang. This library allows you to use defer functionality in PHP code.
 
@@ -70,12 +70,14 @@ function throwException()
 try {
     throwException();
 } catch (\Exception $e) {
+    echo "exception has been caught\n";
 }
 
 // Output:
 //
 // before exception
 // after exception
+// exception has been caught
 ```
 
 ## Credits
