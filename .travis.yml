@@ -43,7 +43,7 @@ script:
   - vendor/bin/phpunit
 
 after_script:
-- |
-  if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
-    travis_retry bin/coveralls.sh;
-  fi
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
+      travis_retry bin/coveralls.sh;
+    fi
