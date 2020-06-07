@@ -9,7 +9,7 @@ function defer_range(&$arr, $min, $max)
 {
     $arr = array();
     for ($i = $max; $i >= $min; --$i) {
-        // $i is a reference, value of given reference is being changed after each iteration
+        // $i is a reference, value of given reference is changed after each iteration
         defer($_, function () use (&$arr, &$i) {
             $arr[] = $i;
         });
