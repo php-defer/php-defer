@@ -24,15 +24,12 @@ final class Sentence
     /**
      * @param string $part
      */
-    public function append($part)
+    public function append($part): void
     {
         $this->parts[] = $part;
     }
 
-    /**
-     * @return string
-     */
-    public function getSentence()
+    public function getSentence(): string
     {
         return \implode(' ', $this->parts);
     }
