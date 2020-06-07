@@ -4,6 +4,7 @@
 
 * Added `*.phpt` tests
 * Updated [README.md](README.md)
+* Added return type declarations
 
 ## [5.0.0] - 2020-02-24
 
