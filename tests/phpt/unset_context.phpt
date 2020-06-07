@@ -10,6 +10,7 @@ function helloGoodbye()
     defer($_, function () {
         echo "hello\n";
     });
+    // context is being destroyed here, it triggers callback immediately
     unset($_);
 
     defer($_, function () {
