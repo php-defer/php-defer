@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.0.2] - ????-??-??
+## [3.0.2] - 2020-06-07
 
 * Added `*.phpt` tests.
 * Updated [README.md](README.md).
