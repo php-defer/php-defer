@@ -23,7 +23,7 @@ matrix:
       dist: precise
 
   allow_failures:
-    - php: 8.0-nightly
+    - php: nightly
 
 install:
   - travis_retry composer update
