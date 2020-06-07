@@ -18,17 +18,18 @@ matrix:
     - php: nightly
 
 install:
+  - PHP_VER=$(php -r "echo PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . '.' . PHP_RELEASE_VERSION;")
   - |
-    if [[ ${TRAVIS_PHP_VERSION:0:3} == "8.0" ]]; then
+    if [[ ${PHP_VER:0:3} == "8.0" ]]; then
       composer config platform.php 7.4.99;
     fi
   - travis_retry composer update
   - |
-    if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
+    if [[ ${PHP_VER:0:3} != "8.0" ]]; then
       cd dev-tools; travis_retry composer update; cd ..;
     fi
   - |
-    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.1" ]]; then
+    if [[ ${PHP_VER:0:3} == "7.1" ]]; then
       export RUN_CS_FIXER="true";
     fi
 
@@ -44,6 +45,6 @@ script:
 
 after_script:
   - |
-    if [[ ${TRAVIS_PHP_VERSION:0:3} != "8.0" ]]; then
+    if [[ ${PHP_VER:0:3} != "8.0" ]]; then
       travis_retry bin/coveralls.sh;
     fi
