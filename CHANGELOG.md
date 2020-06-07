@@ -2,8 +2,9 @@
 
 ## [4.0.2] - 2020-06-07
 
-* Added `*.phpt` tests.
-* Updated [README.md](README.md).
+* Added `*.phpt` tests
+* Updated [README.md](README.md)
+* Added return type declarations
 
 ## [4.0.1] - 2020-02-23
 
