@@ -4,7 +4,7 @@
     "keywords": ["golang", "defer"],
     "type": "library",
     "require": {
-        "php": "^5.3 || ^7.0"
+        "php": ">=5.3"
     },
     "require-dev": {
         "awesomite/phpunit-4.8-fixer": "^1.0",

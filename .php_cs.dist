@@ -11,7 +11,7 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(array('src', 'tests'))
-    ->name('*.php')
+    ->name(array('*.php', '*.phpt'))
 ;
 
 $header = <<<'HEADER'
