@@ -15,7 +15,7 @@ matrix:
     - php: nightly
 
 install:
-  - echo "${TRAVIS_PHP_VERSION:0:3}
+  - echo ${TRAVIS_PHP_VERSION:0:3}
   - |
     if [[ ${TRAVIS_PHP_VERSION:0:3} == "8.0" ]]; then
       composer config platform.php 7.4.99;
