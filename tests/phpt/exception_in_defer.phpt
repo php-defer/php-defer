@@ -7,7 +7,7 @@ require \implode(\DIRECTORY_SEPARATOR, array(__DIR__, '..', '..', 'vendor', 'aut
 
 class DebugException extends \Exception
 {
-    public function __construct($message = '', $code = 0, Throwable $previous = null)
+    public function __construct($message = '', $code = 0, $previous = null)
     {
         parent::__construct($message, $code, $previous);
         echo "[DEBUG] exception '{$message}' has been created\n";
