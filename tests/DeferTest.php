@@ -32,7 +32,7 @@ final class DeferTest extends TestCase
         $sentence = new Sentence();
 
         try {
-            $this->throwExceptionInDefer($sentence);
+            $this->throwExceptionAndDefer($sentence);
         } catch (DeferException $e) {
         }
 
@@ -40,6 +40,28 @@ final class DeferTest extends TestCase
     }
 
     public function testMultipleContexts(): void
+    public function testThrowExceptionInDefer()
+    {
+        $expectedOutput = <<<'EXPECTED'
+before exception
+throwing deferred exception
+
+EXPECTED;
+
+        $this->expectOutputString($expectedOutput);
+        $this->expectException(\get_class(new DeferException()));
+        $this->expectExceptionMessage('deferred');
+
+        defer($_, function () {
+            echo "throwing deferred exception\n";
+
+            throw new DeferException('deferred');
+        });
+
+        echo "before exception\n";
+    }
+
+    public function testMultipleContexts()
     {
         $sentence = new Sentence();
         $this->appendOneTwoThreeInMultipleContexts($sentence);
@@ -103,7 +125,7 @@ final class DeferTest extends TestCase
     /**
      * @throws DeferException
      */
-    private function throwExceptionInDefer(Sentence $sentence): void
+    private function throwExceptionAndDefer(Sentence $sentence): void
     {
         defer($_, fn () => $sentence->append('after exception'));
 
