@@ -46,7 +46,7 @@ before_script:
 
 script:
   - |
-    if [[ "$RUN_CS_FIXER" = "true" ]]; then
+    if [[ "$RUN_CS_FIXER" == "true" ]]; then
       ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist;
     fi
   - vendor/bin/phpunit
