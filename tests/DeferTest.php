@@ -32,11 +32,32 @@ final class DeferTest extends TestCase
         $sentence = new Sentence();
 
         try {
-            $this->throwExceptionInDefer($sentence);
+            $this->throwExceptionAndDefer($sentence);
         } catch (DeferException $e) {
         }
 
         $this->assertSame('before exception ... after exception', $sentence->getSentence());
+    }
+
+    public function testThrowExceptionInDefer()
+    {
+        $expectedOutput = <<<'EXPECTED'
+before exception
+throwing deferred exception
+
+EXPECTED;
+
+        $this->expectOutputString($expectedOutput);
+        $this->expectException(DeferException::class);
+        $this->expectExceptionMessage('deferred');
+
+        defer($_, function () {
+            echo "throwing deferred exception\n";
+
+            throw new DeferException('deferred');
+        });
+
+        echo "before exception\n";
     }
 
     public function testMultipleContexts(): void
@@ -116,7 +137,7 @@ final class DeferTest extends TestCase
     /**
      * @throws DeferException
      */
-    private function throwExceptionInDefer(Sentence $sentence): void
+    private function throwExceptionAndDefer(Sentence $sentence): void
     {
         defer($_, function () use ($sentence) {
             $sentence->append('after exception');

@@ -6,12 +6,10 @@ require \implode(\DIRECTORY_SEPARATOR, [__DIR__, '..', '..', 'vendor', 'autoload
 function throwException()
 {
     defer($_, function () {
-        echo "after exception\n";
+        throw new \Exception('Deferred exception');
     });
 
     echo "before exception\n";
-
-    throw new \Exception('My exception');
 }
 
 try {
@@ -23,5 +21,4 @@ try {
 ?>
 --EXPECT--
 before exception
-after exception
 exception has been caught
