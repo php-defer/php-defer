@@ -1,5 +1,3 @@
---INI--
-track_errors=0
 --FILE--
 <?php
 
