@@ -39,7 +39,7 @@ final class DeferTest extends TestCase
         $this->assertSame('before exception ... after exception', $sentence->getSentence());
     }
 
-    public function testThrowExceptionInDefer()
+    public function testThrowExceptionInDefer(): void
     {
         $expectedOutput = <<<'EXPECTED'
 before exception
