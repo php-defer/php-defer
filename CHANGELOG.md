@@ -2,7 +2,8 @@
 
 ## [5.0.2] - 2020-06-21
 
-Added tests for deferred exceptions.
+* Added tests for deferred exceptions
+* PHPUnit version has been updated to `^9.2`
 
 ## [5.0.1] - 2020-06-07
 
