@@ -12,6 +12,7 @@
 $finder = PhpCsFixer\Finder::create()
     ->in(array('src', 'tests'))
     ->name(array('*.php', '*.phpt'))
+    ->notName(array('change_returned_value.phpt'))
 ;
 
 $header = <<<'HEADER'
