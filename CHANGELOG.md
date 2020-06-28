@@ -1,5 +1,9 @@
 # Changelog
 
+## [5.0.3] - 2020-06-28
+
+Added test for changing returned value in defer.
+
 ## [5.0.2] - 2020-06-21
 
 * Added tests for deferred exceptions
@@ -18,6 +22,7 @@
 
 Given version is successor of version [4.0.1].
 
+[5.0.3]: https://github.com/php-defer/php-defer/compare/v5.0.2...v5.0.3
 [5.0.2]: https://github.com/php-defer/php-defer/compare/v5.0.1...v5.0.2
 [5.0.1]: https://github.com/php-defer/php-defer/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/php-defer/php-defer/compare/v4.0.1...v5.0.0
