@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.0.4] - 2020-06-28
+
+Added test for changing returned value in defer.
+
 ## [4.0.3] - 2020-06-21
 
 * Added tests for deferred exceptions
@@ -20,6 +24,7 @@ Added additional unit test.
 Order of execution deferred functions has reversed (LIFO as in Golang).
 Given version is successor of version [2.0.0].
 
+[4.0.4]: https://github.com/php-defer/php-defer/compare/v4.0.3...v4.0.4
 [4.0.3]: https://github.com/php-defer/php-defer/compare/v4.0.2...v4.0.3
 [4.0.2]: https://github.com/php-defer/php-defer/compare/v4.0.1...v4.0.2
 [4.0.1]: https://github.com/php-defer/php-defer/compare/v4.0.0...v4.0.1
