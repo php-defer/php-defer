@@ -22,7 +22,7 @@ Added additional unit test.
 Order of execution deferred functions has reversed (LIFO as in Golang).
 Given version is successor of version [1.0.0], to provide support for PHP ^5.3.
 
-[3.0.4]: https://github.com/php-defer/php-defer/compare/v3.0.2...v3.0.4
+[3.0.4]: https://github.com/php-defer/php-defer/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/php-defer/php-defer/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/php-defer/php-defer/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/php-defer/php-defer/compare/v3.0.0...v3.0.1
