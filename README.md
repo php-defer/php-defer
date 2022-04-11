@@ -27,6 +27,14 @@ defer($context, $callback);
 
 function helloGoodbye()
 {
+    
+    // in 7.4+ 
+    // without use statments
+    defer($_, fn() => print_r([1]));
+    
+    defer($_, fn() => print_r([2]))->push(fn() => print_r([3]));
+    
+    // 7.3 -
     defer($_, function () {
         echo "goodbye\n";
     });
@@ -34,7 +42,7 @@ function helloGoodbye()
     defer($_, function () {
         echo "...\n";
     });
-
+    
     echo "hello\n";
 }
 
