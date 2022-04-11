@@ -11,7 +11,7 @@
 
 function defer(?SplStack &$context, callable $callback): SplStack
 {
-    $context = $context ?? new class extends SplStack {
+    $context ??= new class extends SplStack {
         public function __destruct() {
             while ($this->count() > 0) {
                 \call_user_func($this->pop());
