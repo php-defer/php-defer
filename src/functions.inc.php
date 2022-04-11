@@ -9,23 +9,18 @@
  * file that was distributed with this source code.
  */
 
-function defer(?SplStack &$context, callable $callback): void
+function defer(?SplStack &$context, callable $callback): SplStack
 {
-    $context = $context ?? new SplStack();
-
-    $context->push(
-        new class($callback) {
-            private $callback;
-
-            public function __construct(callable $callback)
-            {
-                $this->callback = $callback;
-            }
-
-            public function __destruct()
-            {
-                \call_user_func($this->callback);
+    $context = $context ?? new class extends SplStack {
+        public function __destruct() {
+            $this->rewind();
+            while ($this->count() > 0) {
+                \call_user_func($this->pop());
             }
         }
-    );
+    };
+
+    $context->push($callback);
+    
+    return $context;
 }
