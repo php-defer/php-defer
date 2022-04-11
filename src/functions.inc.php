@@ -13,7 +13,6 @@ function defer(?SplStack &$context, callable $callback): SplStack
 {
     $context = $context ?? new class extends SplStack {
         public function __destruct() {
-            $this->rewind();
             while ($this->count() > 0) {
                 \call_user_func($this->pop());
             }
