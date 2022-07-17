@@ -24,7 +24,7 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 HEADER;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRules([
         '@PSR2' => true,
         '@Symfony' => true,
@@ -32,7 +32,7 @@ return PhpCsFixer\Config::create()
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
         'header_comment' => ['header' => $header],
-        'native_function_invocation' => true,
+        'native_function_invocation' => ['exclude' => [], 'include' => ['@internal'], 'scope' => 'all', 'strict' => true],
         'native_constant_invocation' => true,
         'array_syntax' => ['syntax' => 'short'],
         'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
