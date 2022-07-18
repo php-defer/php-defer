@@ -32,8 +32,6 @@ function helloGoodbye()
     // without use statments
     defer($_, fn() => print_r([1]));
     
-    defer($_, fn() => print_r([2]))->push(fn() => print_r([3]));
-    
     // 7.3 -
     defer($_, function () {
         echo "goodbye\n";
