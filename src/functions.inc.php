@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-function defer(?SplStack &$context, callable $callback)
+function defer(?SplStack &$context, callable $callback): void
 {
     $context ??= new class extends SplStack {
         public function __destruct() {
