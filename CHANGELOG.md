@@ -1,6 +1,6 @@
 # Changelog
 
-## [5.0.4] - 2022-07-18
+## [5.0.4] - xxxx-xx-xx
 
  * Travis has been removed
  * GitHub Actions have been introduced
