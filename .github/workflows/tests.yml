@@ -48,6 +48,7 @@ jobs:
         run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist
 
       - name: Coverage
+        if: startsWith(matrix.php-versions, '7.')
         run: bin/coveralls.sh
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
