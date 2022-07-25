@@ -1,0 +1,48 @@
+name: 'Tests'
+on:
+  push:
+    tags:
+      - v*
+    branches: '**'
+  pull_request:
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-20.04']
+        php-versions: ['7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: xdebug
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: ${{ matrix.php-versions }}
+
+      - name: Install dev-tools
+        uses: php-actions/composer@v6
+        with:
+          php_version: ${{ matrix.php-versions }}
+          args: --working-dir=dev-tools
+
+      - name: Tests
+        run: vendor/bin/phpunit
+
+      - name: Coding Standards Fixer
+        run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist
+
+      - name: Coverage
+        run: bin/coveralls.sh
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
