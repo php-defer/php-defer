@@ -24,4 +24,4 @@ echo foo();
 
 ?>
 --EXPECT--
-Change World
+Change Worldd
