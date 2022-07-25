@@ -30,12 +30,14 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: 8.0
+          version: 2.2.x
 
       - name: Install dev-tools
         uses: php-actions/composer@v6
         with:
           php_version: 8.0
           args: --working-dir=dev-tools
+          version: 2.2.x
 
       - name: Tests
         run: vendor/bin/phpunit
