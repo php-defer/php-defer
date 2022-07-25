@@ -1,7 +1,7 @@
 # PHP Defer
 
 [![Coverage Status](https://coveralls.io/repos/github/php-defer/php-defer/badge.svg?branch=4.0)](https://coveralls.io/github/php-defer/php-defer?branch=4.0)
-[![Tests status](https://github.com/php-defer/php-defer/actions/workflows/tests.yml/badge.svg)](https://github.com/php-defer/php-defer/actions/workflows/tests.yml?query=branch%3A4.0)
+[![Tests status](https://github.com/php-defer/php-defer/actions/workflows/tests.yml/badge.svg?branch=4.0)](https://github.com/php-defer/php-defer/actions/workflows/tests.yml?query=branch%3A4.0)
 
 The [defer statement](https://blog.golang.org/defer-panic-and-recover) originally comes from Golang. This library allows you to use the defer functionality in your PHP code.
 
