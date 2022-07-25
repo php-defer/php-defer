@@ -21,16 +21,26 @@ abstract class TestCase extends BaseTestCase
     /**
      * @param string $class
      */
-    public function expectException($class)
+    public function expectException_($class)
     {
+        if (\method_exists($this, 'expectException')) {
+            $this->expectException($class);
+
+            return;
+        }
         $this->setProperty('expectedException', $class);
     }
 
     /**
      * @param string $message
      */
-    public function expectExceptionMessage($message)
+    public function expectExceptionMessage_($message)
     {
+        if (\method_exists($this, 'expectExceptionMessage')) {
+            $this->expectExceptionMessage($message);
+
+            return;
+        }
         $this->setProperty('expectedExceptionMessage', $message);
     }
 
