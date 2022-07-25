@@ -29,15 +29,13 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.php-versions }}
-          version: 2.2.x
+          php_version: 8.0
 
       - name: Install dev-tools
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.php-versions }}
+          php_version: 8.0
           args: --working-dir=dev-tools
-          version: 2.2.x
 
       - name: Tests
         run: vendor/bin/phpunit
