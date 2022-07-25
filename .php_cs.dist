@@ -10,7 +10,7 @@
  */
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(['src', 'tests'] )
+    ->in(['src', 'tests'])
     ->name(['*.php', '*.phpt'])
     ->notName(['change_returned_value.phpt'])
 ;
