@@ -1,0 +1,69 @@
+name: 'Tests'
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - '**'
+  pull_request:
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-20.04']
+        php-versions: ['5.3', '5.4', '5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: xdebug
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup composer.json
+        uses: php-actions/composer@v6
+        with:
+          command: config platform.php ${{ matrix.php-versions }}.99
+          php_version: 7.1
+          version: 1
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: 7.1
+          version: 1
+
+      - name: Setup dev-tools/composer.json
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        uses: php-actions/composer@v6
+        with:
+          command: config platform.php ${{ matrix.php-versions }}.99
+          php_version: 7.1
+          version: 1
+
+      - name: Install dev-tools
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        uses: php-actions/composer@v6
+        with:
+          php_version: 7.1
+          args: --working-dir=dev-tools
+          version: 1
+
+      - name: Tests
+        run: vendor/bin/phpunit
+
+      - name: Coding Standards Fixer
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist
+
+      - name: Coverage
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        run: bin/coveralls.sh
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
