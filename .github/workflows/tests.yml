@@ -33,7 +33,7 @@ jobs:
           version: 1
 
       - name: Install dev-tools
-        if: startsWith('7.', matrix.php-versions)
+        if: startsWith(matrix.php-versions, '7.')
         uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php-versions }}
