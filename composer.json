@@ -4,11 +4,11 @@
     "keywords": ["golang", "defer"],
     "type": "library",
     "require": {
-        "php": ">=5.3"
+        "php": "^5.3 || ^7.0 || ^8.0"
     },
     "require-dev": {
-        "awesomite/phpunit-4.8-fixer": "^1.0",
-        "phpunit/phpunit": "4.8.36"
+        "phpunit/phpunit": "4.8.36 || ^8.5 || ^9.5",
+        "symfony/phpunit-bridge": "*"
     },
     "license": "MIT",
     "authors": [
