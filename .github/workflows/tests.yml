@@ -40,7 +40,11 @@ jobs:
         run: vendor/bin/phpunit
 
       - name: Coding Standards Fixer
-        run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist
+        run: |
+          if [[ ${PHP_VER:0:1} == "8" ]]; then
+            ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix;
+            ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist;
+          fi
 
       - name: Coverage
         run: bin/coveralls.sh
