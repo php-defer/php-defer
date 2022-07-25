@@ -40,7 +40,7 @@ jobs:
           version: 1
 
       - name: Setup dev-tools/composer.json
-        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
         uses: php-actions/composer@v6
         with:
           command: config platform.php ${{ matrix.php-versions }}.99
@@ -48,7 +48,7 @@ jobs:
           version: 1
 
       - name: Install dev-tools
-        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
         uses: php-actions/composer@v6
         with:
           php_version: 7.1
@@ -59,11 +59,11 @@ jobs:
         run: vendor/bin/phpunit
 
       - name: Coding Standards Fixer
-        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
         run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php_cs.dist
 
       - name: Coverage
-        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
+        if: startsWith(matrix.php-versions, '7.1') || startsWith(matrix.php-versions, '7.2') || startsWith(matrix.php-versions, '7.3') || startsWith(matrix.php-versions, '7.4')
         run: bin/coveralls.sh
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
