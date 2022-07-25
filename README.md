@@ -82,7 +82,7 @@ try {
 
 ## Installation
 
-PHP Defer supports all PHP versions from `^5.3` to `^8.1`.
+PHP Defer supports all PHP versions from `^5.3` to `^8.0`.
 The following command will install the latest possible version of PHP Defer for your PHP interpreter.
 
 ```
