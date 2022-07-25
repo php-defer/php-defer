@@ -91,7 +91,7 @@ EXPECTED;
     {
         $min = 1;
         $max = 1000;
-        $expected = range($min, $max);
+        $expected = \range($min, $max);
 
         for ($i = 0; $i < 100; ++$i) {
             $this->range($range, $min, $max);
