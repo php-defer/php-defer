@@ -31,7 +31,7 @@ Added test for changing returned value in defer.
 * PHP version has been updated to `^7.4`
 * PHPUnit version has been updated to `^9.0`
 
-Given version is successor of version [4.0.1].
+The given version is the successor of version [4.0.1].
 
 [5.0.5]: https://github.com/php-defer/php-defer/compare/v5.0.4...v5.0.5
 [5.0.4]: https://github.com/php-defer/php-defer/compare/v5.0.3...v5.0.4
