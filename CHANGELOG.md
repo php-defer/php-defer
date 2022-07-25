@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.0.5] - 2022-07-25
+
+* Travis has been removed
+* GitHub Actions have been introduced
+* Made the `defer` logic more explicit
+
 ## [4.0.4] - 2020-06-28
 
 Added test for changing returned value in defer.
@@ -24,6 +30,7 @@ Added a test.
 The order of execution of deferred functions has been reversed (LIFO as in Golang).
 The given version is the successor of version [2.0.0].
 
+[4.0.5]: https://github.com/php-defer/php-defer/compare/v4.0.4...v4.0.5
 [4.0.4]: https://github.com/php-defer/php-defer/compare/v4.0.3...v4.0.4
 [4.0.3]: https://github.com/php-defer/php-defer/compare/v4.0.2...v4.0.3
 [4.0.2]: https://github.com/php-defer/php-defer/compare/v4.0.1...v4.0.2
