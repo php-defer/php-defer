@@ -7,8 +7,7 @@
         "php": "^5.3 || ^7.0 || ^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.8.36 || ^8.5 || ^9.5",
-        "symfony/phpunit-bridge": "*"
+        "phpunit/phpunit": "4.8.36 || ^8.5 || ^9.5"
     },
     "license": "MIT",
     "authors": [
