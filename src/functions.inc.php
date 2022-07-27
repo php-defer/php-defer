@@ -9,10 +9,12 @@
  * file that was distributed with this source code.
  */
 
+use PhpDefer\DeferrableStack;
+
 /**
  * @param callable $callback
  */
-function defer(SplStack &$context = null, $callback)
+function defer(DeferrableStack &$context = null, $callback)
 {
     if (!\is_callable($callback)) {
         throw new \InvalidArgumentException(\sprintf(
@@ -22,6 +24,6 @@ function defer(SplStack &$context = null, $callback)
         ));
     }
 
-    $context = $context ?: new SplStack();
-    $context->push(new \PhpDefer\Defer($callback));
+    $context = $context ?: new DeferrableStack();
+    $context->push($callback);
 }

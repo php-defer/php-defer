@@ -14,23 +14,12 @@ namespace PhpDefer;
 /**
  * @internal
  */
-final class Defer
+final class DeferrableStack extends \SplStack
 {
-    /**
-     * @var callable callable
-     */
-    private $callback;
-
-    /**
-     * @param callable $callback
-     */
-    public function __construct($callback)
-    {
-        $this->callback = $callback;
-    }
-
     public function __destruct()
     {
-        \call_user_func($this->callback);
+        while ($this->count() > 0) {
+            \call_user_func($this->pop());
+        }
     }
 }

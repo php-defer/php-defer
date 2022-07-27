@@ -15,7 +15,7 @@ namespace PhpDefer;
  * @internal
  *
  * @covers \defer
- * @covers \PhpDefer\Defer
+ * @covers \PhpDefer\DeferrableStack
  */
 final class DeferTest extends TestCase
 {
