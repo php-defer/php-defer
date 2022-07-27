@@ -12,8 +12,8 @@
 use PhpDefer\DeferrableStack;
 
 /**
- * @param DeferrableStack|null $context The context must be an optional parameter, that is the only way to make it nullable in older PHP versions.
- * @param callable $callback
+ * @param DeferrableStack|null $context   the context must be an optional parameter, that is the only way to make it nullable in older PHP versions
+ * @param callable             $callback
  */
 function defer(DeferrableStack &$context = null, $callback)
 {
