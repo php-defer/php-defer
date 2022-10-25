@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.6] - 2022-10-25
+
+Improved unit tests.
+
 ## [3.0.5] - 2022-07-27
 
 * Travis has been removed
@@ -21,13 +25,14 @@ Added tests for deferred exceptions.
 
 ## [3.0.1] - 2020-02-23
 
-Added an unit test.
+Added a unit test.
 
 ## [3.0.0] - 2019-10-21
 
 The order of execution of deferred functions has been reversed (LIFO as in Golang).
 The given version is the successor of version [2.0.0], to provide the support for PHP ^5.3.
 
+[3.0.6]: https://github.com/php-defer/php-defer/compare/v3.0.5...v3.0.6
 [3.0.5]: https://github.com/php-defer/php-defer/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/php-defer/php-defer/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/php-defer/php-defer/compare/v3.0.2...v3.0.3
