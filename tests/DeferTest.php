@@ -47,8 +47,8 @@ throwing deferred exception
 EXPECTED;
 
         $this->expectOutputString($expectedOutput);
-        $this->expectException_(\get_class(new DeferException()));
-        $this->expectExceptionMessage_('deferred');
+        $this->expectException(\get_class(new DeferException()));
+        $this->expectExceptionMessage('deferred');
 
         defer($_, function () {
             echo "throwing deferred exception\n";
@@ -93,8 +93,8 @@ EXPECTED;
      */
     public function testInvalidArgumentCallable($notCallable)
     {
-        $this->expectException_(\get_class(new \InvalidArgumentException()));
-        $this->expectExceptionMessage_('Function defer expects argument $callable of type callable');
+        $this->expectException(\get_class(new \InvalidArgumentException()));
+        $this->expectExceptionMessage('Function defer expects argument $callable of type callable');
         defer($_, $notCallable);
     }
 

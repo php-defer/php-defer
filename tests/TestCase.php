@@ -13,45 +13,42 @@ namespace PhpDefer;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
-/**
- * @internal
- */
-abstract class TestCase extends BaseTestCase
-{
+if (\method_exists('PHPUnit\Framework\TestCase', 'expectException')) {
     /**
-     * @param string $class
+     * @internal
      */
-    public function expectException_($class)
-    {
-        if (\method_exists($this, 'expectException')) {
-            $this->expectException($class);
-
-            return;
-        }
-        $this->setProperty('expectedException', $class);
+    abstract class TestCase extends BaseTestCase {
     }
-
+} else {
     /**
-     * @param string $message
+     * @internal
      */
-    public function expectExceptionMessage_($message)
-    {
-        if (\method_exists($this, 'expectExceptionMessage')) {
-            $this->expectExceptionMessage($message);
-
-            return;
+    abstract class TestCase extends BaseTestCase {
+        /**
+         * @param string $class
+         */
+        public function expectException($class)
+        {
+            $this->setProperty('expectedException', $class);
         }
-        $this->setProperty('expectedExceptionMessage', $message);
-    }
 
-    /**
-     * @param string $name
-     * @param $value
-     */
-    private function setProperty($name, $value)
-    {
-        $reflection = new \ReflectionProperty('PHPUnit_Framework_TestCase', $name);
-        $reflection->setAccessible(true);
-        $reflection->setValue($this, $value);
+        /**
+         * @param string $message
+         */
+        public function expectExceptionMessage($message)
+        {
+            $this->setProperty('expectedExceptionMessage', $message);
+        }
+
+        /**
+         * @param string $name
+         * @param $value
+         */
+        private function setProperty($name, $value)
+        {
+            $reflection = new \ReflectionProperty('PHPUnit\Framework\TestCase', $name);
+            $reflection->setAccessible(true);
+            $reflection->setValue($this, $value);
+        }
     }
 }
