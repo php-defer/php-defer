@@ -17,13 +17,15 @@ if (\method_exists('PHPUnit\Framework\TestCase', 'expectException')) {
     /**
      * @internal
      */
-    abstract class TestCase extends BaseTestCase {
+    abstract class TestCase extends BaseTestCase
+    {
     }
 } else {
     /**
      * @internal
      */
-    abstract class TestCase extends BaseTestCase {
+    abstract class TestCase extends BaseTestCase
+    {
         /**
          * @param string $class
          */
