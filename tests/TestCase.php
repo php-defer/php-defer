@@ -46,7 +46,7 @@ if (\method_exists('PHPUnit\Framework\TestCase', 'expectException')) {
          */
         private function setProperty($name, $value)
         {
-            $reflection = new \ReflectionProperty('PHPUnit\Framework\TestCase', $name);
+            $reflection = new \ReflectionProperty('PHPUnit_Framework_TestCase', $name);
             $reflection->setAccessible(true);
             $reflection->setValue($this, $value);
         }
