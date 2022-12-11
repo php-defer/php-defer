@@ -23,6 +23,9 @@ jobs:
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: PHP version
+        run: php -v
+
       - name: Checkout
         uses: actions/checkout@v2
 
