@@ -1,6 +1,6 @@
 # Changelog
 
-## [5.0.6] - 2022-07-25
+## [5.0.6] - ????-??-??
 
 Perform tests against PHP 8.2 in GitHub Actions.
 
