@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.0.6] - 2022-12-14
+
+Perform tests against PHP 8.2 in GitHub Actions.
+
 ## [4.0.5] - 2022-07-25
 
 * Travis has been removed
@@ -30,6 +34,7 @@ Added a test.
 The order of execution of deferred functions has been reversed (LIFO as in Golang).
 The given version is the successor of version [2.0.0].
 
+[4.0.6]: https://github.com/php-defer/php-defer/compare/v4.0.5...v4.0.6
 [4.0.5]: https://github.com/php-defer/php-defer/compare/v4.0.4...v4.0.5
 [4.0.4]: https://github.com/php-defer/php-defer/compare/v4.0.3...v4.0.4
 [4.0.3]: https://github.com/php-defer/php-defer/compare/v4.0.2...v4.0.3
