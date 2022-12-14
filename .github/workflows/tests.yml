@@ -45,6 +45,8 @@ jobs:
 
       - name: Coding Standards Fixer
         run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php-cs-fixer.dist.php
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
 
       - name: Coverage
         run: bin/coveralls.sh
