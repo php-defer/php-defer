@@ -1,6 +1,6 @@
 # Changelog
 
-## [5.0.7] - 2023-??-??
+## [5.0.7] - ????-??-??
 
 Perform tests against PHP 8.3 in GitHub Actions.
 
