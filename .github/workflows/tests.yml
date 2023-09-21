@@ -32,12 +32,12 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.php-versions }}
+          php_version: ${{ contains(matrix.php-versions, 'dev') && '8.2' || matrix.php-versions }}
 
       - name: Install dev-tools
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.php-versions }}
+          php_version: ${{ contains(matrix.php-versions, 'dev') && '8.2' || matrix.php-versions }}
           args: --working-dir=dev-tools
 
       - name: Tests
