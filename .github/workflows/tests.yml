@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-20.04']
-        php-versions: ['7.4', '8.0', '8.1', '8.2']
+        php-versions: ['7.4', '8.0', '8.1', '8.2', '8.3-dev', '8.4-dev']
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -32,9 +32,10 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.php-versions }}
+          php_version: ${{ contains(matrix.php-versions, 'dev') && '8.2' || matrix.php-versions }}
 
       - name: Install dev-tools
+        if: ${{ !contains(matrix.php-versions, 'dev') }}
         uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php-versions }}
@@ -44,11 +45,13 @@ jobs:
         run: vendor/bin/phpunit
 
       - name: Coding Standards Fixer
+        if: ${{ !contains(matrix.php-versions, 'dev') }}
         run: ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix && ./dev-tools/vendor/bin/php-cs-fixer --diff --dry-run -v --allow-risky=yes fix .php-cs-fixer.dist.php
         env:
           PHP_CS_FIXER_IGNORE_ENV: 1
 
       - name: Coverage
+        if: ${{ !contains(matrix.php-versions, 'dev') }}
         run: bin/coveralls.sh
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
