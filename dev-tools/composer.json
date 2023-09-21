@@ -1,6 +1,6 @@
 {
     "require": {
-        "php-coveralls/php-coveralls": "^2.1",
-        "friendsofphp/php-cs-fixer": "v2.16.1"
+        "php-coveralls/php-coveralls": "^2.6",
+        "friendsofphp/php-cs-fixer": "v2.19.3"
     }
 }
