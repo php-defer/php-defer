@@ -14,6 +14,4 @@ namespace PhpDefer;
 /**
  * @internal
  */
-final class DeferException extends \Exception
-{
-}
+final class DeferException extends \Exception {}
