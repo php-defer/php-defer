@@ -1,5 +1,9 @@
 # Changelog
 
+## [5.0.7] - 2023-??-??
+
+Perform tests against PHP 8.3 in GitHub Actions.
+
 ## [5.0.6] - 2022-12-14
 
 Perform tests against PHP 8.2 in GitHub Actions.
@@ -37,6 +41,7 @@ Added test for changing returned value in defer.
 
 The given version is the successor of version [4.0.1].
 
+[5.0.7]: https://github.com/php-defer/php-defer/compare/v5.0.6...v5.0.7
 [5.0.6]: https://github.com/php-defer/php-defer/compare/v5.0.5...v5.0.6
 [5.0.5]: https://github.com/php-defer/php-defer/compare/v5.0.4...v5.0.5
 [5.0.4]: https://github.com/php-defer/php-defer/compare/v5.0.3...v5.0.4
