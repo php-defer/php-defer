@@ -14,7 +14,6 @@ jobs:
       matrix:
         operating-system: ['ubuntu-20.04']
         php-versions: ['7.4', '8.0', '8.1', '8.2', '8.3-dev']
-        composer-php-version: ${{ contains(matrix.php-versions, 'dev') && '8.2' || matrix.php-versions }}
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -33,12 +32,12 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.composer-php-version }}
+          php_version: ${{ contains(matrix.php-versions, 'dev') && '8.2' || matrix.php-versions }}
 
       - name: Install dev-tools
         uses: php-actions/composer@v6
         with:
-          php_version: ${{ matrix.composer-php-version }}
+          php_version: ${{ contains(matrix.php-versions, 'dev') && '8.2' || matrix.php-versions }}
           args: --working-dir=dev-tools
 
       - name: Tests
