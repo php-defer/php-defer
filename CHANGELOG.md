@@ -2,7 +2,7 @@
 
 ## [5.0.7] - ????-??-??
 
-Perform tests against PHP 8.3 in GitHub Actions.
+Perform tests against PHP 8.3.0-dev & 8.4.0-dev in GitHub Actions.
 
 ## [5.0.6] - 2022-12-14
 
