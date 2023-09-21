@@ -1,6 +1,6 @@
 # Changelog
 
-## [4.0.7] - ????-??-??
+## [4.0.7] - 2023-09-21
 
 Perform tests against PHP 8.3.0-dev & 8.4.0-dev in GitHub Actions.
 
